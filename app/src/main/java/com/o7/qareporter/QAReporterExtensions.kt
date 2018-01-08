@@ -1,7 +1,26 @@
 package com.o7.qareporter
 
 import android.app.Activity
+import android.content.Context
+import android.net.Uri
+import android.provider.MediaStore
 import android.util.DisplayMetrics
+
+fun Uri.getShareableUri(context: Context): Uri = Uri.parse("file://" + this.getRealPath(context))
+
+fun Uri.getRealPath(context: Context): String {
+    val result: String
+    val cursor = context.contentResolver?.query(this, null, null, null, null)
+    if (cursor == null) {
+        result = this.path
+    } else {
+        cursor.moveToFirst()
+        val idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA)
+        result = cursor.getString(idx)
+        cursor.close()
+    }
+    return result
+}
 
 fun Activity.getDeviceInfo(): String {
     val stringBuilder = StringBuilder()

@@ -1,4 +1,4 @@
-package com.o7.qareporter.mvp.view
+package com.o7.qareporter.presentation.mvp.view
 
 import android.content.Intent
 import android.support.design.widget.FloatingActionButton
@@ -6,8 +6,8 @@ import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.o7.qareporter.R
-import com.o7.qareporter.mvp.activity.MainActivity
-import com.o7.qareporter.mvp.activity.NewActivity
+import com.o7.qareporter.presentation.mvp.activity.MainActivity
+import com.o7.qareporter.presentation.mvp.activity.NewActivity
 import java.lang.ref.WeakReference
 
 class MainView(activity: MainActivity) {

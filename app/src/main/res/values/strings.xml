@@ -11,4 +11,7 @@
     <string name="device_screen_dp">Screen resolution: %s dp\n</string>
     <string name="screen_density_template">%d dpi (%s)</string>
     <string name="device_screen_density">Screen density: %s\n</string>
+    <string name="done_new">Done</string>
+    <string name="button_new_choose">Choose</string>
+    <string name="hint_new_description">Enter a description</string>
 </resources>

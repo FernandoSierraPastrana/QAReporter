@@ -1,4 +1,4 @@
-package com.o7.qareporter.base
+package com.o7.qareporter.presentation.base
 
 import android.support.annotation.CallSuper
 import io.reactivex.observers.DisposableObserver
