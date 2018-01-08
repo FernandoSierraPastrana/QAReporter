@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">QAReporter</string>
+    <string name="title_activity_new">New Report</string>
+    <string name="device_details">Device details:\n\n</string>
+    <string name="device_manufacturer">Manufacturer: %s\n</string>
+    <string name="device_model">Model: %s\n</string>
+    <string name="device_screen_inches">Screen size: %.1f in\n</string>
+    <string name="resolution_template">%d x %d</string>
+    <string name="resolution_template_float">%.1f x %.1f</string>
+    <string name="device_screen_px">Screen resolution: %s px\n</string>
+    <string name="device_screen_dp">Screen resolution: %s dp\n</string>
+    <string name="screen_density_template">%d dpi (%s)</string>
+    <string name="device_screen_density">Screen density: %s\n</string>
+</resources>
