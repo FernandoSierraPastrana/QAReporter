@@ -99,7 +99,7 @@ class NewView(activity: NewActivity) {
         return builder.toString()
     }
 
-    fun getReport(): Report = Report(imageUri, editDescription.text.toString(), System.currentTimeMillis())
+    fun getReport(): Report = Report(imageUri.getShareableUri(activityRef.get()), editDescription.text.toString(), System.currentTimeMillis())
 
     fun isValid(): Boolean = ::imageUri.isInitialized
 

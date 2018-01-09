@@ -5,7 +5,7 @@ import com.o7.qareporter.domain.model.Report
 
 class ReportsInteractor(private val reportRepository: ReportRepository) {
 
-    fun saveReport(report: Report) {
-        reportRepository.save(report)
-    }
+    fun saveReport(report: Report) = reportRepository.save(report)
+
+    fun getReports(): List<Report> = reportRepository.getAll()
 }

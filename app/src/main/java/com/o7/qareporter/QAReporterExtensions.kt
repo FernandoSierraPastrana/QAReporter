@@ -6,11 +6,11 @@ import android.net.Uri
 import android.provider.MediaStore
 import android.util.DisplayMetrics
 
-fun Uri.getShareableUri(context: Context): Uri = Uri.parse("file://" + this.getRealPath(context))
+fun Uri.getShareableUri(context: Context?): Uri = Uri.parse("file://" + this.getRealPath(context))
 
-fun Uri.getRealPath(context: Context): String {
+fun Uri.getRealPath(context: Context?): String {
     val result: String
-    val cursor = context.contentResolver?.query(this, null, null, null, null)
+    val cursor = context?.contentResolver?.query(this, null, null, null, null)
     if (cursor == null) {
         result = this.path
     } else {

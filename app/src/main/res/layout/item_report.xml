@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/margin_all_normal">
+
+    <ImageView
+        android:id="@+id/image_item"
+        android:layout_width="@dimen/width_item_image"
+        android:layout_height="@dimen/width_item_image"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/text_item_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/text_item_date"
+        android:layout_alignParentTop="true"
+        android:layout_margin="@dimen/margin_all_normal"
+        android:layout_toEndOf="@id/image_item"
+        android:layout_toRightOf="@id/image_item"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:maxLines="3"
+        android:textSize="@dimen/text_normal"
+        tools:text="Description" />
+
+    <TextView
+        android:id="@+id/text_item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/image_item"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_toEndOf="@id/image_item"
+        android:layout_toRightOf="@id/image_item"
+        android:gravity="end"
+        android:textSize="@dimen/text_xsmall"
+        android:textStyle="italic"
+        tools:text="25 February 1991 07:00 AM" />
+
+</RelativeLayout>
