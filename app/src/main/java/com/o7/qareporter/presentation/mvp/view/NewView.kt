@@ -5,11 +5,14 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
+import android.support.design.widget.Snackbar
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.ScrollView
 import com.o7.qareporter.R
+import com.o7.qareporter.domain.model.Report
 import com.o7.qareporter.getShareableUri
 import com.o7.qareporter.presentation.mvp.activity.NewActivity
 import java.lang.ref.WeakReference
@@ -26,6 +29,7 @@ class NewView(activity: NewActivity) {
     private val activityRef = WeakReference(activity)
     private lateinit var imageScreenshot: ImageView
     private lateinit var editDescription: EditText
+    private lateinit var scrollView: ScrollView
     private lateinit var imageUri: Uri
 
     fun init() {
@@ -33,6 +37,7 @@ class NewView(activity: NewActivity) {
         if (activity != null) {
             imageScreenshot = activity.findViewById(R.id.image_new_preview)
             editDescription = activity.findViewById(R.id.edit_new_description)
+            scrollView = activity.findViewById(R.id.scroll_new)
         }
     }
 
@@ -78,6 +83,7 @@ class NewView(activity: NewActivity) {
             emailIntent.putExtra(Intent.EXTRA_SUBJECT, EMAIL_SUBJECT)
             emailIntent.putExtra(Intent.EXTRA_TEXT, buildEmailBody(deviceInfo))
             activity.startActivity(Intent.createChooser(emailIntent, EMAIL_CHOOSER))
+            activity.finish()
         }
     }
 
@@ -91,5 +97,13 @@ class NewView(activity: NewActivity) {
         }
         builder.append(deviceInfo)
         return builder.toString()
+    }
+
+    fun getReport(): Report = Report(imageUri, editDescription.text.toString(), System.currentTimeMillis())
+
+    fun isValid(): Boolean = ::imageUri.isInitialized
+
+    fun showError() {
+        Snackbar.make(scrollView, R.string.error_new, Snackbar.LENGTH_SHORT).show()
     }
 }

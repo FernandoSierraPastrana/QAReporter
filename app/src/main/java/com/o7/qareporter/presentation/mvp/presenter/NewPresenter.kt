@@ -3,12 +3,13 @@ package com.o7.qareporter.presentation.mvp.presenter
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import com.o7.qareporter.domain.interactor.ReportsInteractor
 import com.o7.qareporter.presentation.base.Presenter
 import com.o7.qareporter.presentation.mvp.activity.NewActivity
 import com.o7.qareporter.presentation.mvp.view.NewView
 
 
-class NewPresenter(view: NewView) : Presenter<NewView>(view) {
+class NewPresenter(view: NewView, private val reportsInteractor: ReportsInteractor) : Presenter<NewView>(view) {
     private lateinit var shareIntent: Intent
 
     fun init() {
@@ -48,7 +49,11 @@ class NewPresenter(view: NewView) : Presenter<NewView>(view) {
     }
 
     fun saveAndSendReport(deviceInfo: String) {
-        //TODO Call interactor to save report in Database
-        view.sendReport(deviceInfo)
+        if (view.isValid()) {
+            reportsInteractor.saveReport(view.getReport())
+            view.sendReport(deviceInfo)
+        } else {
+            view.showError()
+        }
     }
 }

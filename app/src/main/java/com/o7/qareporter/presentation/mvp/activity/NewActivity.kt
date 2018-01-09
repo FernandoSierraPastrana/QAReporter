@@ -6,6 +6,10 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import com.o7.qareporter.R
+import com.o7.qareporter.data.mapper.ReportMapper
+import com.o7.qareporter.data.repository.ReportRepository
+import com.o7.qareporter.data.source.RReportDataSource
+import com.o7.qareporter.domain.interactor.ReportsInteractor
 import com.o7.qareporter.getDeviceInfo
 import com.o7.qareporter.presentation.mvp.presenter.NewPresenter
 import com.o7.qareporter.presentation.mvp.view.NewView
@@ -16,6 +20,7 @@ class NewActivity : AppCompatActivity() {
         const val REQUEST_CODE_CHOOSER = 1000
         const val REQUEST_CODE_SHARE = 1001
     }
+
     private lateinit var presenter: NewPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +28,7 @@ class NewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_new)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_close)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        presenter = NewPresenter(NewView(this))
+        presenter = NewPresenter(NewView(this), ReportsInteractor(ReportRepository(RReportDataSource(), ReportMapper())))
         presenter.init()
         button_new_choose.setOnClickListener {
             presenter.chooseNewImage()
